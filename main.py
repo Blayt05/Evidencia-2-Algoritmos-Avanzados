@@ -1,8 +1,9 @@
+import math
 
 #Funcion para leer los grafos del archivo
 def leer_grafo(nombre_archivo):
     with open(nombre_archivo, 'r') as f:
-        
+        #Se lee la primera linea
         primer_linea = f.readline().strip().split()
 
         #Se crean variables para almacenar los datos
@@ -13,7 +14,7 @@ def leer_grafo(nombre_archivo):
         lineas = f.readlines()
     #Se guardan los nodos en un diccionario
     nodos = {}
-    #Se guarda en una tupla los valores de la arista
+    #Se guarda las aristas en un arreglo como diccionarios
     aristas = []
     #Se guarda la oficina
     oficina = None
@@ -50,12 +51,12 @@ def leer_grafo(nombre_archivo):
             elif seccion == 'EDGES':
                 #Se separa los datos
                 datos = linea.split()
-                #Se crean variable para guardar los nodos y la arista
-                nodo1 = datos[0]
-                nodo2 = datos[1]
-                diametro = datos[2]
-                #Se agregan en una lista en formato de tupla
-                aristas.append((nodo1,nodo2,diametro))
+                #Se agregan en una lista en formato de diccionario
+                aristas.append({
+                    'nodo_1' : int(datos[0]),
+                    'nodo_2' : int(datos[1]),
+                    'diametro' : float(datos[2])
+                })
             elif seccion == 'OFFICE':
                 #Se agrega el valor a la variable oficina
                 oficina = int(linea)
@@ -68,9 +69,34 @@ def leer_grafo(nombre_archivo):
                 diametro = datos[2]
                 #Se agregan en una lista en formato de tupla
                 nuevos_nodos.append((x,y,diametro))
-
+    #Se retornan los valores agregados
     return num_total_nodos,  num_total_aristas, nodos, aristas, oficina, nuevos_nodos
-        
+     
+#Longitud de las aristas o tuberias
+def calcular_longitud(nodo1, nodo2):
+    #Se calcula la distancia euclidiana por el teorema de pitagoras
+    dx = (nodo2['x'] - nodo1['x'])
+    dy = (nodo2['y'] - nodo1['y'])
+    #Se saca la raiz
+    distancia = math.sqrt(dx**2 + dy**2)
+    #Se retorna la distancia
+    return distancia
+
+#Funcion para ir guardando los valores de la longitud en la lista de diccionarios
+def guardar_arista(nodos, aristas):
+    #Se recorren todas las aristas
+    for arista in aristas:
+        #Se accede al nodo 1
+        nodo1 = nodos[arista['nodo_1']]
+        #Se accede al nodo2
+        nodo2 = nodos[arista['nodo_2']]
+        #Se agrega al diccionario de aristas y se manda a llamar a la funcion de calc longitud
+        arista['longitud'] = calcular_longitud(nodo1, nodo2)
+    #Se retorna el arreglo de aristas con la nueva longitud agregada
+    return aristas
+
+    
+
 #Inicializacion del problema
 
 archivos = [
@@ -83,9 +109,8 @@ archivos = [
 for archivo in archivos:
     num_total_nodos,  num_total_aristas, nodos, aristas, oficina, nuevos_nodos = leer_grafo(archivo)
 
-    print(num_total_nodos)
-    print(num_total_aristas)
-    print(nodos)
-    print(aristas)
-    print(oficina)
-    print(nuevos_nodos)
+    aristas_longitud = guardar_arista(nodos,aristas)
+
+    print(f"La longitud de las aristas es {aristas_longitud}")
+
+
