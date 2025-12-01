@@ -3,6 +3,7 @@ import heapq #Libreria que se utiliza para la cola de prioridad
 #Defaultdict nos ayuda a crear valores automaticos para claves que no existen
 #Deque es una cola que nos permite quitar elementos por ambos extremos.
 from collections import defaultdict, deque 
+
 #Punto 1 - Lectura grafo
 #Funcion para leer los grafos del archivo
 def leer_grafo(nombre_archivo):
@@ -456,6 +457,7 @@ def flujo_por_sector(sectores, aristas, nodos_lejanos):
         }
     #Se retornan los resultados de flujo
     return resultados_flujo
+
 #Funcion para obtener el uso de la tuberias por sector
 def calcular_uso_tuberias(aristas,sectores, resultados_flujo):
     #Se guarda un arreglo del uso de las tuberias
@@ -505,41 +507,229 @@ def flujo_maximo(aristas, sectores, nodos_lejanos):
     #Se retornan los valores de los resultados del flujo maximo y el uso de tuberias
     return resultados_flujo, uso_tuberias
 
+
+#Punto 6 - Muestras de calidad del agua
+
+#Funcion para calcular las distancias desde todos los nodos
+def calcular_todas_las_distancias(grafo):
+    #Se crea un diccionario para almacenar las distancias desde cada nodo
+    distancias_todos = {}
+    #Se recorre cada nodo del grafo
+    for nodo in grafo.keys():
+        #Se calcula dijkstra desde el nodo actual
+        distancias_todos[nodo] = dijkstra(grafo, nodo)
+    #Se retornan las distancias
+    return distancias_todos
+
+#Funcion para obtener una ruta que visite todos los nodos y regrese a la oficina
+def muestras_calidad_agua(oficina, grafo):
+    #Se calculan las distancias entre todos los pares de nodos
+    distancias_todos = calcular_todas_las_distancias(grafo)
+
+    #Se crea un conjunto de nodos no visitados
+    no_visitados = set(grafo.keys())
+    #Se crea una lista para la ruta
+    ruta = []
+    #Variable para almacenar la distancia total de la ruta
+    distancia_total = 0.0
+
+    #Se inicia desde la oficina
+    nodo_actual = oficina
+    ruta.append(nodo_actual)
+    #Se marca la oficina como visitada
+    if nodo_actual in no_visitados:
+        no_visitados.remove(nodo_actual)
+
+    #Se aplica un heuristico de vecino mas cercano para construir la ruta
+    while no_visitados:
+        #Variables para guardar el siguiente nodo y la distancia minima
+        siguiente_nodo = None
+        distancia_minima = float('inf')
+
+        #Se busca el nodo no visitado mas cercano al nodo actual
+        for nodo in no_visitados:
+            distancia = distancias_todos[nodo_actual][nodo]
+            if distancia < distancia_minima:
+                distancia_minima = distancia
+                siguiente_nodo = nodo
+
+        #Se actualiza la distancia total y el nodo actual
+        distancia_total += distancia_minima
+        nodo_actual = siguiente_nodo
+        ruta.append(nodo_actual)
+        no_visitados.remove(nodo_actual)
+
+    #Al final se regresa a la oficina
+    distancia_total += distancias_todos[nodo_actual][oficina]
+    ruta.append(oficina)
+
+    #Se retorna la ruta y la distancia total
+    return ruta, distancia_total
+
+
+#Punto 7 - Expansion de la red
+
+#Funcion para conectar los nuevos nodos al nodo no-fuente mas cercano
+def conectar_nuevos_nodos(nodos, aristas, nuevos_nodos):
+    #Si no hay nodos no se hace nada
+    if not nodos:
+        return nodos, aristas
+
+    #Se obtiene el id maximo actual para generar nuevos ids
+    nuevo_id = max(nodos.keys()) + 1
+
+    #Se recorren los nuevos nodos
+    for x, y, diametro in nuevos_nodos:
+        #Se convierten los datos a sus tipos correspondientes
+        x = float(x)
+        y = float(y)
+        diametro = float(diametro)
+
+        #Se agrega el nuevo nodo al diccionario de nodos
+        nodos[nuevo_id] = {
+            'x': x,
+            'y': y,
+            'es_fuente': False
+        }
+
+        #Se busca el nodo no-fuente mas cercano al nuevo nodo
+        nodo_mas_cercano = None
+        distancia_minima = float('inf')
+
+        for id_nodo, info in nodos.items():
+            #Se ignora el mismo nodo y las fuentes
+            if id_nodo == nuevo_id:
+                continue
+            if info['es_fuente']:
+                continue
+
+            #Se calcula la distancia entre el nuevo nodo y el nodo existente
+            distancia = calcular_longitud(nodos[nuevo_id], info)
+            if distancia < distancia_minima:
+                distancia_minima = distancia
+                nodo_mas_cercano = id_nodo
+
+        #Se crea la nueva arista que conecta al nuevo nodo con el nodo mas cercano
+        nueva_arista = {
+            'nodo_1': nuevo_id,
+            'nodo_2': nodo_mas_cercano,
+            'diametro': diametro,
+            'longitud': distancia_minima
+        }
+
+        #Se agrega la nueva arista a la lista de aristas
+        aristas.append(nueva_arista)
+
+        #Se incrementa el id para el siguiente nuevo nodo
+        nuevo_id += 1
+
+    #Se retornan los nodos y aristas actualizados
+    return nodos, aristas
+
+#Funcion que realiza la expansion completa de la red
+def expansion_red(nodos, aristas, nuevos_nodos):
+    #Si no hay nuevos nodos no se hace nada
+    if not nuevos_nodos:
+        return nodos, aristas, grafo_adyacencia(nodos, aristas)
+
+    #Se conectan los nuevos nodos
+    nodos_actualizados, aristas_actualizadas = conectar_nuevos_nodos(nodos, aristas, nuevos_nodos)
+
+    #Se recalculan las longitudes de todas las aristas
+    aristas_actualizadas = guardar_arista(nodos_actualizados, aristas_actualizadas)
+
+    #Se construye el nuevo grafo de adyacencia
+    grafo_actualizado = grafo_adyacencia(nodos_actualizados, aristas_actualizadas)
+
+    #Se retornan los elementos actualizados
+    return nodos_actualizados, aristas_actualizadas, grafo_actualizado
+
+
 #Inicializacion del problema
 
 archivos = [
     "FOS.txt",
-    #"HAN.txt",
-    #"NYT.txt",
-    #"PES.txt"
+    "HAN.txt",
+    "NYT.txt",
+    "PES.txt"
 ]
 
 for archivo in archivos:
-    #Se logra hacer el primer punto
+    print("=" * 80)
+    print(f"Procesando archivo: {archivo}")
+    print("=" * 80)
+
+    #Punto 1 - Instancias
     num_total_nodos,  num_total_aristas, nodos, aristas, oficina, nuevos_nodos = leer_grafo(archivo)
+    print("Punto 1 - Instancias:")
+    print(f"Total de nodos: {num_total_nodos}")
+    print(f"Total de aristas: {num_total_aristas}")
+    print(f"Nodo office: {oficina}")
+    print(f"Nuevos nodos definidos (coordenadas, diametro): {nuevos_nodos}")
+    print()
 
-    #Se logra hacer el segundo punto
+    #Punto 2 - Longitud de tuberias
     aristas_longitud = guardar_arista(nodos,aristas)
+    print("Punto 2 - Longitud de tuberias (nodo1, nodo2, diametro, longitud):")
+    for arista in aristas_longitud:
+        print(f"{arista['nodo_1']} - {arista['nodo_2']}: diametro = {arista['diametro']}, longitud = {arista['longitud']}")
+    print()
 
-    # print(aristas_longitud)
-
-    #Se logra hacer el tercer punto
+    #Punto 3 - Sectorizacion
     sectores, tuberias_cerradas, grafo = sectorizacion(nodos,aristas_longitud)
+    print("Punto 3 - Sectorizacion (nodo -> fuente):")
+    for nodo_id in sorted(sectores.keys()):
+        print(f"Nodo {nodo_id} -> Fuente {sectores[nodo_id]}")
+    print()
+    print("Tuberias cerradas (entre sectores):")
+    if not tuberias_cerradas:
+        print("No hay tuberias que cerrar entre sectores.")
+    else:
+        for arista in tuberias_cerradas:
+            print(f"Tuberia cerrada: {arista['nodo_1']} - {arista['nodo_2']}")
+    print()
 
-    # print(sectores)
-    # print("*" * 80)
-    # print(tuberias_cerradas)
-
-    #Se logra hacer el cuarto punto
+    #Punto 4 - Frescura del agua
     nodos_lejanos = frescura_agua(nodos, sectores, grafo)
+    print("Punto 4 - Nodo que recibe el agua con mayor tardanza en cada sector:")
+    for fuente, info in nodos_lejanos.items():
+        print(f"Fuente {fuente}: nodo mas lejano = {info['nodo_lejano']}, distancia = {info['distancia']}")
+    print()
 
-    # print(nodos_lejanos)
-
-    #Se logra hacer el quinto punto
+    #Punto 5 - Flujo maximo por sector
     resultados_flujo, uso_tuberias = flujo_maximo(aristas, sectores, nodos_lejanos)
-    
-    # print(resultados_flujo)
-    # print("*" * 80)
-    # print(uso_tuberias)
+    print("Punto 5 - Flujo maximo por sector:")
+    for fuente, info in resultados_flujo.items():
+        print(f"Sector con fuente {fuente}: origen = {info['origen']}, destino = {info['destino']}, flujo_maximo = {info['flujo_maximo']}")
+    print()
+    print("Uso de tuberias (solo dentro del mismo sector):")
+    for uso in uso_tuberias:
+        print(
+            f"Tuberia {uso['nodo_1']} - {uso['nodo_2']} (sector {uso['sector']}): "
+            f"flujo = {uso['flujo']}, capacidad = {uso['capacidad']}, "
+            f"porcentaje = {uso['porcentaje']}%, diametro = {uso['diametro']}"
+        )
+    print()
 
+    #Punto 6 - Muestras de calidad del agua
+    ruta_muestras, distancia_total_ruta = muestras_calidad_agua(oficina, grafo)
+    print("Punto 6 - Ruta de distancia minima para tomar muestras en todos los nodos y regresar a office:")
+    print(f"Ruta: {ruta_muestras}")
+    print(f"Distancia total recorrida: {distancia_total_ruta}")
+    print()
 
+    #Punto 7 - Expansion de la red
+    num_aristas_antes = len(aristas)
+    nodos_expandidos, aristas_expandidas, grafo_expandidos = expansion_red(nodos, aristas, nuevos_nodos)
+    print("Punto 7 - Expansion de la red:")
+    if not nuevos_nodos:
+        print("No hay nuevos nodos definidos en el archivo. La red permanece igual.")
+    else:
+        nuevas_aristas = aristas_expandidas[num_aristas_antes:]
+        print("Nuevos nodos agregados y sus conexiones:")
+        for arista in nuevas_aristas:
+            print(
+                f"Nuevo nodo {arista['nodo_1']} conectado a nodo {arista['nodo_2']} "
+                f"con diametro = {arista['diametro']}, longitud = {arista['longitud']}"
+            )
+    print()
