@@ -1,0 +1,92 @@
+================================================================================
+Instancia: NYT.txt (ANTES de agregar nuevos nodos)
+================================================================================
+
+Punto 1 - Instancias:
+Total de nodos: 20
+Total de aristas: 21
+Nodo office: 5
+Nuevos nodos definidos (coordenadas, diametro): [('930', '1779', '120'), ('6478', '3050', '20'), ('1269', '1069', '170')]
+
+Punto 2 - Longitud de tuberias (nodo1, nodo2, diametro, longitud):
+1 - 2: diametro = 181.0, longitud = 261.20490041344937
+2 - 3: diametro = 183.0, longitud = 230.23466289853056
+3 - 4: diametro = 183.0, longitud = 248.64633518312712
+4 - 5: diametro = 181.0, longitud = 207.03864373589778
+5 - 6: diametro = 181.0, longitud = 211.6057655169159
+6 - 7: diametro = 181.0, longitud = 187.3846311734236
+7 - 8: diametro = 133.0, longitud = 187.94946129212502
+8 - 9: diametro = 133.0, longitud = 185.42114226808118
+9 - 10: diametro = 183.0, longitud = 182.21415971323415
+11 - 9: diametro = 205.0, longitud = 275.13632984395207
+12 - 11: diametro = 207.0, longitud = 236.5417510715603
+13 - 12: diametro = 205.0, longitud = 213.41274563624359
+14 - 13: diametro = 205.0, longitud = 351.4342043683284
+15 - 14: diametro = 205.0, longitud = 281.1138559374119
+1 - 15: diametro = 207.0, longitud = 322.33212685055145
+10 - 17: diametro = 73.0, longitud = 473.07081922266144
+12 - 18: diametro = 75.0, longitud = 362.0220987729893
+18 - 19: diametro = 61.0, longitud = 309.64657272445305
+11 - 20: diametro = 63.0, longitud = 386.58763560155415
+20 - 16: diametro = 63.0, longitud = 426.4141179651537
+9 - 16: diametro = 75.0, longitud = 480.8378104933097
+
+Punto 3 - Sectorizacion (nodo -> fuente):
+Nodo 1 -> Fuente 19
+Nodo 2 -> Fuente 19
+Nodo 3 -> Fuente 17
+Nodo 4 -> Fuente 17
+Nodo 5 -> Fuente 17
+Nodo 6 -> Fuente 17
+Nodo 7 -> Fuente 17
+Nodo 8 -> Fuente 17
+Nodo 9 -> Fuente 17
+Nodo 10 -> Fuente 17
+Nodo 11 -> Fuente 19
+Nodo 12 -> Fuente 19
+Nodo 13 -> Fuente 19
+Nodo 14 -> Fuente 19
+Nodo 15 -> Fuente 19
+Nodo 16 -> Fuente 17
+Nodo 17 -> Fuente 17
+Nodo 18 -> Fuente 19
+Nodo 19 -> Fuente 19
+Nodo 20 -> Fuente 19
+
+Tuberias cerradas (entre sectores):
+Tuberia cerrada: 2 - 3
+Tuberia cerrada: 11 - 9
+Tuberia cerrada: 20 - 16
+
+Punto 4 - Nodo que recibe el agua con mayor tardanza en cada sector:
+Fuente 19: nodo mas lejano = 2, distancia = 2101.166504703427
+Fuente 17: nodo mas lejano = 3, distancia = 1883.3309581054664
+
+Punto 5 - Flujo maximo por sector:
+Sector con fuente 19: origen = 19, destino = 2, flujo_maximo = 2922.466566001905
+Sector con fuente 17: origen = 17, destino = 3, flujo_maximo = 4185.386812745002
+
+Uso de tuberias (solo dentro del mismo sector):
+Tuberia 1 - 2 (sector 19): flujo = 2922.466566001905, capacidad = 25730.429231063805, porcentaje = 11.35801715454351%, diametro = 181.0
+Tuberia 3 - 4 (sector 17): flujo = 4185.386812745002, capacidad = 26302.199094017145, porcentaje = 15.912687748215834%, diametro = 183.0
+Tuberia 4 - 5 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 5 - 6 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 6 - 7 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 7 - 8 (sector 17): flujo = 4185.386812745002, capacidad = 13892.908112337462, porcentaje = 30.126067047317544%, diametro = 133.0
+Tuberia 8 - 9 (sector 17): flujo = 4185.386812745002, capacidad = 13892.908112337462, porcentaje = 30.126067047317544%, diametro = 133.0
+Tuberia 9 - 10 (sector 17): flujo = 4185.386812745002, capacidad = 26302.199094017145, porcentaje = 15.912687748215834%, diametro = 183.0
+Tuberia 12 - 11 (sector 19): flujo = 0.0, capacidad = 33653.52590341726, porcentaje = 0.0%, diametro = 207.0
+Tuberia 13 - 12 (sector 19): flujo = 2922.466566001905, capacidad = 33006.35781677777, porcentaje = 8.854253420582985%, diametro = 205.0
+Tuberia 14 - 13 (sector 19): flujo = 2922.466566001905, capacidad = 33006.35781677777, porcentaje = 8.854253420582985%, diametro = 205.0
+Tuberia 15 - 14 (sector 19): flujo = 2922.466566001905, capacidad = 33006.35781677777, porcentaje = 8.854253420582985%, diametro = 205.0
+Tuberia 1 - 15 (sector 19): flujo = 2922.466566001905, capacidad = 33653.52590341726, porcentaje = 8.683983290158464%, diametro = 207.0
+Tuberia 10 - 17 (sector 17): flujo = 4185.386812745002, capacidad = 4185.386812745002, porcentaje = 100.0%, diametro = 73.0
+Tuberia 12 - 18 (sector 19): flujo = 2922.466566001905, capacidad = 4417.864669110647, porcentaje = 66.1511111111111%, diametro = 75.0
+Tuberia 18 - 19 (sector 19): flujo = 2922.466566001905, capacidad = 2922.466566001905, porcentaje = 100.0%, diametro = 61.0
+Tuberia 11 - 20 (sector 19): flujo = 0.0, capacidad = 3117.245310524472, porcentaje = 0.0%, diametro = 63.0
+Tuberia 9 - 16 (sector 17): flujo = 0.0, capacidad = 4417.864669110647, porcentaje = 0.0%, diametro = 75.0
+
+Punto 6 - Ruta de distancia minima para tomar muestras en todos los nodos y regresar a office:
+Ruta: [5, 4, 3, 2, 1, 15, 14, 13, 12, 11, 9, 10, 8, 7, 6, 16, 20, 18, 19, 17, 5]
+Distancia total recorrida: 9581.36204199709
+

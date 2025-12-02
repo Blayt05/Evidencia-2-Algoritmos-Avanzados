@@ -1,0 +1,130 @@
+================================================================================
+Instancia: HAN.txt (ANTES de agregar nuevos nodos)
+================================================================================
+
+Punto 1 - Instancias:
+Total de nodos: 32
+Total de aristas: 34
+Nodo office: 29
+Nuevos nodos definidos (coordenadas, diametro): [('8457', '5177', '18'), ('6478', '3050', '20'), ('595', '5929', '17')]
+
+Punto 2 - Longitud de tuberias (nodo1, nodo2, diametro, longitud):
+1 - 2: diametro = 16.0, longitud = 409.03028555352745
+2 - 3: diametro = 16.0, longitud = 1003.2579740525365
+3 - 4: diametro = 16.0, longitud = 849.0248846765334
+4 - 5: diametro = 18.0, longitud = 998.8899999999994
+5 - 6: diametro = 18.0, longitud = 1230.403370606567
+6 - 7: diametro = 16.0, longitud = 649.25
+7 - 8: diametro = 18.0, longitud = 944.6152521529596
+8 - 9: diametro = 18.0, longitud = 954.5
+9 - 10: diametro = 18.0, longitud = 788.0199999999995
+10 - 11: diametro = 16.0, longitud = 697.8712108261809
+11 - 12: diametro = 16.0, longitud = 839.54
+12 - 13: diametro = 16.0, longitud = 1683.187575673014
+10 - 14: diametro = 18.0, longitud = 788.0100000000002
+14 - 15: diametro = 18.0, longitud = 854.6099999999997
+15 - 16: diametro = 18.0, longitud = 654.8200000000006
+17 - 16: diametro = 16.0, longitud = 721.4200000000001
+18 - 17: diametro = 16.0, longitud = 543.8399999999997
+19 - 18: diametro = 16.0, longitud = 677.0300000000002
+3 - 19: diametro = 18.0, longitud = 606.0831996516647
+3 - 20: diametro = 16.0, longitud = 1437.3328853470234
+20 - 21: diametro = 16.0, longitud = 1287.4600000000003
+21 - 22: diametro = 16.0, longitud = 399.54999999999995
+20 - 23: diametro = 16.0, longitud = 1609.32
+23 - 24: diametro = 18.0, longitud = 1496.0529480603282
+24 - 25: diametro = 16.0, longitud = 1053.2913048155294
+26 - 25: diametro = 16.0, longitud = 1097.0
+27 - 26: diametro = 18.0, longitud = 856.0686573517336
+16 - 27: diametro = 16.0, longitud = 1087.6799999999998
+23 - 28: diametro = 18.0, longitud = 1132.510004414972
+28 - 29: diametro = 18.0, longitud = 1398.4499999999998
+29 - 30: diametro = 18.0, longitud = 1780.8600002526873
+30 - 31: diametro = 18.0, longitud = 768.5759333338506
+32 - 31: diametro = 16.0, longitud = 1085.81
+25 - 32: diametro = 18.0, longitud = 1444.01
+
+Punto 3 - Sectorizacion (nodo -> fuente):
+Nodo 1 -> Fuente 1
+Nodo 2 -> Fuente 1
+Nodo 3 -> Fuente 1
+Nodo 4 -> Fuente 1
+Nodo 5 -> Fuente 1
+Nodo 6 -> Fuente 1
+Nodo 7 -> Fuente 1
+Nodo 8 -> Fuente 13
+Nodo 9 -> Fuente 13
+Nodo 10 -> Fuente 13
+Nodo 11 -> Fuente 13
+Nodo 12 -> Fuente 13
+Nodo 13 -> Fuente 13
+Nodo 14 -> Fuente 13
+Nodo 15 -> Fuente 1
+Nodo 16 -> Fuente 1
+Nodo 17 -> Fuente 1
+Nodo 18 -> Fuente 1
+Nodo 19 -> Fuente 1
+Nodo 20 -> Fuente 1
+Nodo 21 -> Fuente 1
+Nodo 22 -> Fuente 1
+Nodo 23 -> Fuente 1
+Nodo 24 -> Fuente 1
+Nodo 25 -> Fuente 1
+Nodo 26 -> Fuente 1
+Nodo 27 -> Fuente 1
+Nodo 28 -> Fuente 1
+Nodo 29 -> Fuente 1
+Nodo 30 -> Fuente 1
+Nodo 31 -> Fuente 1
+Nodo 32 -> Fuente 1
+
+Tuberias cerradas (entre sectores):
+Tuberia cerrada: 7 - 8
+Tuberia cerrada: 14 - 15
+
+Punto 4 - Nodo que recibe el agua con mayor tardanza en cada sector:
+Fuente 1: nodo mas lejano = 31, distancia = 9531.23011660946
+Fuente 13: nodo mas lejano = 8, distancia = 4963.118786499194
+
+Punto 5 - Flujo maximo por sector:
+Sector con fuente 1: origen = 1, destino = 31, flujo_maximo = 201.06192982974676
+Sector con fuente 13: origen = 13, destino = 8, flujo_maximo = 201.06192982974676
+
+Uso de tuberias (solo dentro del mismo sector):
+Tuberia 1 - 2 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 2 - 3 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 3 - 4 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 4 - 5 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 5 - 6 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 6 - 7 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 8 - 9 (sector 13): flujo = 201.06192982974676, capacidad = 254.46900494077323, porcentaje = 79.01234567901236%, diametro = 18.0
+Tuberia 9 - 10 (sector 13): flujo = 201.06192982974676, capacidad = 254.46900494077323, porcentaje = 79.01234567901236%, diametro = 18.0
+Tuberia 10 - 11 (sector 13): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 11 - 12 (sector 13): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 12 - 13 (sector 13): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 10 - 14 (sector 13): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 15 - 16 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 17 - 16 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 18 - 17 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 19 - 18 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 3 - 19 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 3 - 20 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 20 - 21 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 21 - 22 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 20 - 23 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 23 - 24 (sector 1): flujo = 201.06192982974676, capacidad = 254.46900494077323, porcentaje = 79.01234567901236%, diametro = 18.0
+Tuberia 24 - 25 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 26 - 25 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 27 - 26 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 16 - 27 (sector 1): flujo = 0.0, capacidad = 201.06192982974676, porcentaje = 0.0%, diametro = 16.0
+Tuberia 23 - 28 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 28 - 29 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 29 - 30 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 30 - 31 (sector 1): flujo = 0.0, capacidad = 254.46900494077323, porcentaje = 0.0%, diametro = 18.0
+Tuberia 32 - 31 (sector 1): flujo = 201.06192982974676, capacidad = 201.06192982974676, porcentaje = 100.0%, diametro = 16.0
+Tuberia 25 - 32 (sector 1): flujo = 201.06192982974676, capacidad = 254.46900494077323, porcentaje = 79.01234567901236%, diametro = 18.0
+
+Punto 6 - Ruta de distancia minima para tomar muestras en todos los nodos y regresar a office:
+Ruta: [29, 28, 23, 24, 25, 26, 27, 16, 15, 14, 10, 11, 12, 13, 9, 8, 7, 6, 5, 4, 3, 19, 18, 17, 2, 1, 20, 21, 22, 32, 31, 30, 29]
+Distancia total recorrida: 43802.149985401884
+

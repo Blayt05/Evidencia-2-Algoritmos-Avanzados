@@ -1,0 +1,75 @@
+================================================================================
+Instancia: NYT.txt (DESPUES de agregar nuevos nodos)
+================================================================================
+
+Punto 7 - Expansion de la red:
+Nuevos nodos agregados y sus conexiones:
+Nuevo nodo 21 conectado a nodo 13 con diametro = 120.0, longitud = 150.0133327407934
+Nuevo nodo 22 conectado a nodo 18 con diametro = 20.0, longitud = 5567.225520849681
+Nuevo nodo 23 conectado a nodo 20 con diametro = 170.0, longitud = 217.04377438664304
+
+Punto 3 (red expandida) - Sectorizacion (nodo -> fuente):
+Nodo 1 -> Fuente 19
+Nodo 2 -> Fuente 19
+Nodo 3 -> Fuente 17
+Nodo 4 -> Fuente 17
+Nodo 5 -> Fuente 17
+Nodo 6 -> Fuente 17
+Nodo 7 -> Fuente 17
+Nodo 8 -> Fuente 17
+Nodo 9 -> Fuente 17
+Nodo 10 -> Fuente 17
+Nodo 11 -> Fuente 19
+Nodo 12 -> Fuente 19
+Nodo 13 -> Fuente 19
+Nodo 14 -> Fuente 19
+Nodo 15 -> Fuente 19
+Nodo 16 -> Fuente 17
+Nodo 17 -> Fuente 17
+Nodo 18 -> Fuente 19
+Nodo 19 -> Fuente 19
+Nodo 20 -> Fuente 19
+Nodo 21 -> Fuente 19
+Nodo 22 -> Fuente 19
+Nodo 23 -> Fuente 19
+
+Tuberias cerradas (entre sectores) en la red expandida:
+Tuberia cerrada: 2 - 3
+Tuberia cerrada: 11 - 9
+Tuberia cerrada: 20 - 16
+
+Punto 4 (red expandida) - Nodo que recibe el agua con mayor tardanza en cada sector:
+Fuente 19: nodo mas lejano = 22, distancia = 5876.872093574134
+Fuente 17: nodo mas lejano = 3, distancia = 1883.3309581054664
+
+Punto 5 (red expandida) - Flujo maximo por sector:
+Sector con fuente 19: origen = 19, destino = 22, flujo_maximo = 314.1592653589793
+Sector con fuente 17: origen = 17, destino = 3, flujo_maximo = 4185.386812745002
+
+Uso de tuberias (red expandida, solo dentro del mismo sector):
+Tuberia 1 - 2 (sector 19): flujo = 0.0, capacidad = 25730.429231063805, porcentaje = 0.0%, diametro = 181.0
+Tuberia 3 - 4 (sector 17): flujo = 4185.386812745002, capacidad = 26302.199094017145, porcentaje = 15.912687748215834%, diametro = 183.0
+Tuberia 4 - 5 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 5 - 6 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 6 - 7 (sector 17): flujo = 4185.386812745002, capacidad = 25730.429231063805, porcentaje = 16.266292237721682%, diametro = 181.0
+Tuberia 7 - 8 (sector 17): flujo = 4185.386812745002, capacidad = 13892.908112337462, porcentaje = 30.126067047317544%, diametro = 133.0
+Tuberia 8 - 9 (sector 17): flujo = 4185.386812745002, capacidad = 13892.908112337462, porcentaje = 30.126067047317544%, diametro = 133.0
+Tuberia 9 - 10 (sector 17): flujo = 4185.386812745002, capacidad = 26302.199094017145, porcentaje = 15.912687748215834%, diametro = 183.0
+Tuberia 12 - 11 (sector 19): flujo = 0.0, capacidad = 33653.52590341726, porcentaje = 0.0%, diametro = 207.0
+Tuberia 13 - 12 (sector 19): flujo = 0.0, capacidad = 33006.35781677777, porcentaje = 0.0%, diametro = 205.0
+Tuberia 14 - 13 (sector 19): flujo = 0.0, capacidad = 33006.35781677777, porcentaje = 0.0%, diametro = 205.0
+Tuberia 15 - 14 (sector 19): flujo = 0.0, capacidad = 33006.35781677777, porcentaje = 0.0%, diametro = 205.0
+Tuberia 1 - 15 (sector 19): flujo = 0.0, capacidad = 33653.52590341726, porcentaje = 0.0%, diametro = 207.0
+Tuberia 10 - 17 (sector 17): flujo = 4185.386812745002, capacidad = 4185.386812745002, porcentaje = 100.0%, diametro = 73.0
+Tuberia 12 - 18 (sector 19): flujo = 0.0, capacidad = 4417.864669110647, porcentaje = 0.0%, diametro = 75.0
+Tuberia 18 - 19 (sector 19): flujo = 314.1592653589793, capacidad = 2922.466566001905, porcentaje = 10.749798441279227%, diametro = 61.0
+Tuberia 11 - 20 (sector 19): flujo = 0.0, capacidad = 3117.245310524472, porcentaje = 0.0%, diametro = 63.0
+Tuberia 9 - 16 (sector 17): flujo = 0.0, capacidad = 4417.864669110647, porcentaje = 0.0%, diametro = 75.0
+Tuberia 21 - 13 (sector 19): flujo = 0.0, capacidad = 11309.733552923255, porcentaje = 0.0%, diametro = 120.0
+Tuberia 22 - 18 (sector 19): flujo = 314.1592653589793, capacidad = 314.1592653589793, porcentaje = 100.0%, diametro = 20.0
+Tuberia 23 - 20 (sector 19): flujo = 0.0, capacidad = 22698.006922186254, porcentaje = 0.0%, diametro = 170.0
+
+Punto 6 (red expandida) - Ruta de distancia minima para muestras:
+Ruta: [5, 4, 3, 2, 1, 15, 14, 13, 21, 12, 11, 9, 10, 8, 7, 6, 16, 20, 23, 18, 19, 17, 22, 5]
+Distancia total recorrida: 23197.327657328333
+
